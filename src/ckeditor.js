@@ -40,7 +40,38 @@ import FontFamily from '@ckeditor/ckeditor5-font/src/fontfamily';
 import FontSize from '@ckeditor/ckeditor5-font/src/fontsize';
 import FontColor from '@ckeditor/ckeditor5-font/src/fontcolor';
 import FontBackgroundColor from '@ckeditor/ckeditor5-font/src/fontbackgroundcolor';
+import TodoList from '@ckeditor/ckeditor5-list/src/todolist';
+import SpecialCharacters from '@ckeditor/ckeditor5-special-characters/src/specialcharacters';
+import SpecialCharactersEssentials from '@ckeditor/ckeditor5-special-characters/src/specialcharactersessentials';
+import SpecialCharactersArrows from '@ckeditor/ckeditor5-special-characters/src/specialcharactersarrows';
+import SpecialCharactersCurrency from '@ckeditor/ckeditor5-special-characters/src/specialcharacterscurrency';
+import SpecialCharactersLatin from '@ckeditor/ckeditor5-special-characters/src/specialcharacterslatin';
+import SpecialCharactersMathematical from '@ckeditor/ckeditor5-special-characters/src/specialcharactersmathematical';
+import SpecialCharactersText from '@ckeditor/ckeditor5-special-characters/src/specialcharacterstext';
 export default class ClassicEditor extends ClassicEditorBase { }
+function SpecialCharactersEmoji( editor ) {
+	editor.plugins.get( 'SpecialCharacters' ).addItems( 'Emoji', [
+		{ title: 'smiley face', character: '😊' },
+		{ title: 'grinning face', character: '😁' },
+		{ title: 'heart face', character: '😍' },
+		{ title: 'kissing face', character: '😘' },
+		{ title: 'quiet face', character: '🤫' },
+		{ title: 'thinking face', character: '🤔' },
+		{ title: 'smirking  face', character: '😏' },
+		{ title: 'unamused  face', character: '😒' },
+		{ title: 'relieved  face', character: '😌' },
+		{ title: 'sad face', character: '😔' },
+		{ title: 'inlove face', character: '🥰' },
+		{ title: 'shamed face', character: '😳' },
+		{ title: 'cool face', character: '😎' },
+		{ title: 'fine face', character: '🙂' },
+		{ title: 'straight face', character: '😑' },
+		{ title: 'rocket', character: '🚀' },
+		{ title: 'wind blowing face', character: '🌬️' },
+		{ title: 'floppy disk', character: '💾' },
+		{ title: 'heart', character: '❤️' }
+	] );
+}
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = [
 	Essentials,
@@ -76,7 +107,16 @@ ClassicEditor.builtinPlugins = [
 	FontFamily,
 	FontSize,
 	FontColor,
-	FontBackgroundColor
+	FontBackgroundColor,
+	TodoList,
+	SpecialCharacters,
+	SpecialCharactersEssentials,
+	SpecialCharactersEmoji,
+	SpecialCharactersArrows,
+	SpecialCharactersCurrency,
+	SpecialCharactersLatin,
+	SpecialCharactersMathematical,
+	SpecialCharactersText
 ];
 
 // Editor configuration.
@@ -96,8 +136,10 @@ ClassicEditor.defaultConfig = {
 			'superscript',
 			'underline',
 			'link',
+			'todoList',
 			'bulletedList',
 			'numberedList',
+			'specialCharacters',
 			'|',
 			'indent',
 			'outdent',
