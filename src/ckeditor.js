@@ -23,6 +23,7 @@ import Image from '@ckeditor/ckeditor5-image/src/image';
 import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
+import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
 import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent';
 import Link from '@ckeditor/ckeditor5-link/src/link';
@@ -33,6 +34,12 @@ import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefrom
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
+import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
+import Autosave from '@ckeditor/ckeditor5-autosave/src/autosave';
+import FontFamily from '@ckeditor/ckeditor5-font/src/fontfamily';
+import FontSize from '@ckeditor/ckeditor5-font/src/fontsize';
+import FontColor from '@ckeditor/ckeditor5-font/src/fontcolor';
+import FontBackgroundColor from '@ckeditor/ckeditor5-font/src/fontbackgroundcolor';
 export default class ClassicEditor extends ClassicEditorBase { }
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = [
@@ -54,6 +61,7 @@ ClassicEditor.builtinPlugins = [
 	ImageStyle,
 	ImageToolbar,
 	ImageUpload,
+	ImageResize,
 	Indent,
 	Link,
 	List,
@@ -62,7 +70,13 @@ ClassicEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	TextTransformation
+	TextTransformation,
+	WordCount,
+	Autosave,
+	FontFamily,
+	FontSize,
+	FontColor,
+	FontBackgroundColor
 ];
 
 // Editor configuration.
@@ -71,10 +85,14 @@ ClassicEditor.defaultConfig = {
 		items: [
 			'heading',
 			'|',
+			'fontFamily',
+			'fontSize',
+			'fontColor',
+			'fontBackgroundColor',
 			'bold',
 			'italic',
 			'strikethrough',
-			'subsript',
+			'subscript',
 			'superscript',
 			'underline',
 			'link',
@@ -93,11 +111,18 @@ ClassicEditor.defaultConfig = {
 		]
 	},
 	image: {
-		toolbar: [
-			'imageStyle:full',
-			'imageStyle:side',
-			'|',
-			'imageTextAlternative'
+		// You need to configure the image toolbar, too, so it uses the new style buttons.
+		toolbar: [ 'imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight' ],
+
+		styles: [
+			// This option is equal to a situation where no style is applied.
+			'full',
+
+			// This represents an image aligned to the left.
+			'alignLeft',
+
+			// This represents an image aligned to the right.
+			'alignRight'
 		]
 	},
 	table: {
@@ -106,6 +131,32 @@ ClassicEditor.defaultConfig = {
 			'tableRow',
 			'mergeTableCells'
 		]
+	},
+	fontSize: {
+		options: [
+			9,
+			11,
+			13,
+			'default',
+			17,
+			19,
+			21
+		]
+	},
+	fontColor: {
+		// Display 6 columns in the color grid.
+		columns: 6,
+
+		// And 12 document colors (2 rows of them).
+		documentColors: 12
+
+		// ...
+	},
+	fontBackgroundColor: {
+		// Remove the "Document colors" section.
+		documentColors: 12
+
+		// ...
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'vi'
