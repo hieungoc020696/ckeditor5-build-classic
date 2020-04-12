@@ -48,6 +48,7 @@ import SpecialCharactersCurrency from '@ckeditor/ckeditor5-special-characters/sr
 import SpecialCharactersLatin from '@ckeditor/ckeditor5-special-characters/src/specialcharacterslatin';
 import SpecialCharactersMathematical from '@ckeditor/ckeditor5-special-characters/src/specialcharactersmathematical';
 import SpecialCharactersText from '@ckeditor/ckeditor5-special-characters/src/specialcharacterstext';
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 export default class ClassicEditor extends ClassicEditorBase { }
 function SpecialCharactersEmoji( editor ) {
 	editor.plugins.get( 'SpecialCharacters' ).addItems( 'Emoji', [
@@ -116,7 +117,8 @@ ClassicEditor.builtinPlugins = [
 	SpecialCharactersCurrency,
 	SpecialCharactersLatin,
 	SpecialCharactersMathematical,
-	SpecialCharactersText
+	SpecialCharactersText,
+	Alignment
 ];
 
 // Editor configuration.
@@ -144,6 +146,10 @@ ClassicEditor.defaultConfig = {
 			'indent',
 			'outdent',
 			'|',
+			'alignment:left',
+			'alignment:right',
+			'alignment:center',
+			'alignment:justify',
 			'imageUpload',
 			'blockQuote',
 			'insertTable',
