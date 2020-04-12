@@ -11,6 +11,10 @@ import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapte
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
+import StrikeThrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
+import Subsript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
+import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript';
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
 import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
@@ -29,9 +33,7 @@ import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefrom
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
-
-export default class ClassicEditor extends ClassicEditorBase {}
-
+export default class ClassicEditor extends ClassicEditorBase { }
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = [
 	Essentials,
@@ -39,6 +41,10 @@ ClassicEditor.builtinPlugins = [
 	Autoformat,
 	Bold,
 	Italic,
+	StrikeThrough,
+	Subsript,
+	Superscript,
+	Underline,
 	BlockQuote,
 	CKFinder,
 	EasyImage,
@@ -67,6 +73,10 @@ ClassicEditor.defaultConfig = {
 			'|',
 			'bold',
 			'italic',
+			'strikethrough',
+			'subsript',
+			'superscript',
+			'underline',
 			'link',
 			'bulletedList',
 			'numberedList',
@@ -98,5 +108,5 @@ ClassicEditor.defaultConfig = {
 		]
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'en'
+	language: 'vi'
 };
